@@ -1,0 +1,80 @@
+# Archivos y directorios generados por Maven
+/target/
+*.jar
+*.war
+*.ear
+*.class
+
+# Archivos de configuración local de Maven
+pom.xml.versionsBackup
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.next
+
+# Directorios de dependencias descargadas por Maven
+/.mvn/
+maven-wrapper.jar
+maven-wrapper.properties
+
+# Archivos de logs
+*.log
+logs/
+*.log.*
+
+# Archivos de configuración local de bases de datos
+*.db
+*.sql
+
+# Archivos de configuración del IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.code-workspace
+.eclipse/
+
+# Archivos de configuración del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Directorios de caché y temporales
+*.tmp
+*.bak
+*.swp
+*~
+.cache/
+
+# Archivos de propiedades locales
+application-local.properties
+application-dev.properties
+application-prod.properties
+
+# Directorios generados por herramientas de testing
+/test-output/
+/surefire-reports/
+/failsafe-reports/
+
+# Archivos de Docker locales (si usas Docker)
+docker-compose.override.yml
+*.dockerignore
+
+# Archivos de documentación generados (si usas herramientas como Javadoc)
+docs/apidocs/
+site/
+
+# Directorios de capturas de pantalla locales (si no los subes a /docs/)
+screenshots/
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# Otros archivos innecesarios
+*.bak
+*.orig
+
+# Otros
+*.cmd
+mvnw
+*.gitattributes
