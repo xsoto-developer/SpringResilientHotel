@@ -192,6 +192,51 @@ curl -X POST "http://localhost:8083/payments/process" -H "Content-Type: applicat
 
 ---
 
+## Unit and Integration Tests
+
+The project includes a comprehensive suite of unit and integration tests to ensure reliability, resilience, and correctness across all microservices. These tests leverage **JUnit 5**, **Mockito**, and **Spring Boot Test** to validate key features and design patterns.
+
+### Test Highlights
+1. **Rooms Service (`hotel-rooms-service`)**:
+   - Validates the **Specification Pattern** for filtering available rooms by guest count and price.
+   - Ensures accurate room availability logic with mocked `RoomRepository`.
+   - Example: `testFindAvailableRooms_WithGuestCountAndMaxPrice`.
+
+2. **Reservations Service (`hotel-reservations-service`)**:
+   - Tests the **Factory Pattern** (implicit or explicit) for creating `Reservation` objects consistently.
+   - Verifies persistence with mocked `ReservationRepository`.
+   - Example: `testCreateReservation_Success`.
+
+3. **Payments Service (`hotel-payments-service`)**:
+   - Validates **CircuitBreaker** and **Retry** patterns using Resilience4j:
+      - Success scenario: Payment completes without failures.
+      - Failure scenario: CircuitBreaker triggers fallback (`"status": "PENDING"`) when in `OPEN` state.
+      - Retry scenario: Up to 3 attempts with exponential backoff before fallback.
+   - Ensures robust error handling and resilience with mocked `PaymentRepository`.
+   - Examples: `testProcessPayment_Success`, `testProcessPayment_FallbackTriggered`, `testProcessPayment_RetryAttempts`.
+
+### Running the Tests
+To execute the tests for each microservice:
+1. **Rooms Service**:
+   ```bash
+   cd hotel-rooms-service
+   mvn test
+---
+
+### Running with Docker
+
+The project supports containerization with Docker using multi-stage builds and Alpine-based images for efficiency.
+
+#### Prerequisites
+- Install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/).
+
+#### Steps
+1. **Build and Run with Docker Compose**:
+   ```bash
+   cd SpringResilientHotel
+   docker-compose up --build
+---
+
 ## Contributing
 Contributions are welcome! To contribute:
 1. Fork the repository.
